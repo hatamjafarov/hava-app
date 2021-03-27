@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #00c6ff;
+    background: -webkit-linear-gradient(to right, #0064df, #00b6e9);
+    background: linear-gradient(to right, #0064df, #00b6e9);
+
+    font-family: sans-serif;
+    color: #fff;
+}
+
+.Top {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.Bottom {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column;
+}
+.temperature {
+    flex-direction: column;
+}
+.tempDegreeSection {
+    display: flex;
+    align-items: center;
+}
+.tempDegreeSection p {
+    font-size: 40px;
+    font-weight: bold;
+}
+.tempDegreeSection span {
+    margin: 10px;
+    font-size: 30px;
+}
+.temp-degree {
+    font-size: 40px;
+}
+
+.cityName {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}

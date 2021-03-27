@@ -12,16 +12,19 @@ const Navigation = (props) => {
     return (
         <div className={classes.Navigation}>
             <ul>
-                {cities.map((city) => {
-                    return (
-                        <li
-                            key={city.name}
-                            onClick={() => props.showName(city.name)}
-                        >
-                            {city.name}
-                        </li>
-                    );
-                })}
+                <li>
+                    {cities.map((city) => {
+                        return (
+                            <a
+                                key={city.name}
+                                onClick={() => props.showName(city.name)}
+                                className={props.active === city.name ? classes.active : null}
+                            >
+                                {city.name}
+                            </a>
+                        );
+                    })}
+                </li>
             </ul>
         </div>
     );

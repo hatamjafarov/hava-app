@@ -10,25 +10,32 @@ import Thunderstorm from "../assets/icons/thunderstorm.png";
 
 const Main = (props) => {
     let desc = null;
+    let condition = null;
 
     switch (props.main) {
-        case "clear sky" || "":
+        case "Clear" || "":
             desc = Sun;
+            condition = "Əsasən aydın";
             break;
         case "Clouds":
             desc = FCloud;
+            condition = "Buludlu";
             break;
         case "Drizzle":
             desc = SRain;
+            condition = "Çiskin";
             break;
         case "Rain":
             desc = Rain;
+            condition = "Yağışlı";
             break;
         case "Thunderstorm":
             desc = Thunderstorm;
+            condition = "Tufan";
             break;
         case "Snow":
             desc = Snow;
+            condition = "Qarlı";
             break;
         case "Mist" ||
             "Smoke" ||
@@ -39,6 +46,7 @@ const Main = (props) => {
             "Squall" ||
             "Tornado":
             desc = Mist;
+            condition = "Dumanlı";
             break;
 
         default:
@@ -50,10 +58,12 @@ const Main = (props) => {
         <div className={classes.Main}>
             <div className={classes.Top}>
                 <p className={classes.cityName}>
-                    {props.timezone.slice(
-                        props.timezone.indexOf("/") + 1,
-                        props.timezone.length
-                    )}
+                    {props.timezone !== null
+                        ? props.timezone.slice(
+                              props.timezone.indexOf("/") + 1,
+                              props.timezone.length
+                          )
+                        : "Baku"}
                 </p>
                 <img src={desc} alt="" />
             </div>
@@ -65,16 +75,17 @@ const Main = (props) => {
                                   .toString()
                                   .slice(0, props.temp.toString().indexOf("."))
                             : props.temp}
+                        °
                     </p>
                     <span>C</span>
                 </div>
                 <div className={classes.tempDescription}>
                     <p className={classes.desc}>
-                        Hiss edilir: {props.feels_like} C
+                        Hiss edilir: {props.feels_like}° C
                     </p>
                 </div>
                 <div className={classes.tempDescription}>
-                    <p className={classes.desc}>{props.main}</p>
+                    <p className={classes.desc}>{condition}</p>
                 </div>
                 <div className={classes.tempDescription}>
                     <p className={classes.desc}>

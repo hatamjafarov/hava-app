@@ -23,8 +23,8 @@ class App extends Component {
         { name: "Paris", lat: "48.8566", lon: "2.3522" },
     ];
 
-    lat = this.coordinates[0].lat;
-    lon = this.coordinates[0].lon;
+    lat = null;
+    lon = null;
 
     showName = (name) => {
         this.setState({
@@ -33,8 +33,10 @@ class App extends Component {
     };
     city;
     timezone;
+    firstT;
 
     switchHandler = () => {
+        this.timezone = this.state.timezone;
         switch (this.state.city) {
             case "Bakı":
                 this.lat = this.coordinates[0].lat;
@@ -56,13 +58,12 @@ class App extends Component {
                 break;
         }
         this.city = this.state.city;
-        this.timezone = this.state.timezone;
     };
 
     componentDidMount() {
         axios
             .get(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=${this.lat}&lon=${this.lon}&exclude=hourly&appid=1ef3e8cfb28e3ebb2ad31b47697f9613&units=metric`
+                `https://api.openweathermap.org/data/2.5/onecall?lat=40.3777&lon=49.892&exclude=hourly&appid=1ef3e8cfb28e3ebb2ad31b47697f9613&units=metric`
             )
             .then((response) => {
                 this.setState({
@@ -99,7 +100,7 @@ class App extends Component {
             <div className="App">
                 {this.city !== this.state.city ? this.switchHandler() : null}
 
-                <Navigation showName={this.showName} />
+                <Navigation active={this.state.city} showName={this.showName} />
 
                 {this.timezone === this.state.timezone ? (
                     <Loading />

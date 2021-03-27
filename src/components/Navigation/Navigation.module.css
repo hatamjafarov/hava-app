@@ -1,7 +1,7 @@
 .Navigation {
     width: 100%;
     height: 56px;
-    background-color: blueviolet;
+    background-color: #104c91;
     position: fixed;
     top: 0;
     left: 0;
@@ -18,8 +18,6 @@
 }
 .Navigation ul li {
     list-style: none;
-    margin: 0 10px;
-    padding: 0 5px;
     text-decoration: none;
     height: 100%;
     width: auto;
@@ -27,4 +25,30 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+.Navigation ul a {
+    list-style: none;
+    padding: 0 15px;
+    text-decoration: none;
+    height: 100%;
+    width: auto;
+    color: #EFC9AF;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 5px solid transparent;
+    font-weight: 500;
+    transition: ease-in .25s;
+}
+
+.active {
+    color: #104c91!important;
+    background-color: #EFC9AF!important;;
+    border-bottom: 5px solid #1f8ac0!important;;
+}
+
+.Navigation ul a:hover {
+    color: #104c91;
+    background-color: #EFC9AF;
+    border-bottom: 5px solid #1f8ac0;
 }

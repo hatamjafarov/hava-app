@@ -5,26 +5,20 @@
 }
 
 .Main {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgb(31, 138, 192);
-    background: linear-gradient(
-        90deg,
-        rgba(31, 138, 192, 0.87718837535014) 12%,
-        rgba(31, 138, 192, 1) 86%
-    );
     font-family: sans-serif;
     color: #fff;
+    margin-top: 56px;
 }
 
 .Top {
-    height: 30vh;
+    height: 20vh;
     width: 50%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 .Bottom {
@@ -34,7 +28,18 @@
     justify-content: space-around;
     align-items: center;
     flex-flow: column;
+    border-radius: 35px;
+    padding: 5px;
+    background-color: rgba(16, 76, 145, 0.4);
+    margin-bottom: 10px;
 }
+@media (max-width: 700px){
+    .Bottom{
+        width: 100%;
+    }
+}
+
+
 .temperature {
     flex-direction: column;
 }

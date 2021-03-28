@@ -4,9 +4,11 @@ import "./App.css";
 import Loading from "./components/Loading/Loading";
 import Main from "./components/Main";
 import Navigation from "./components/Navigation/Navigation";
+import Days from "./components/Days/Days";
 
 class App extends Component {
     state = {
+        week: [],
         timezone: null,
         temp: null,
         main: null,
@@ -23,6 +25,11 @@ class App extends Component {
         { name: "Paris", lat: "48.8566", lon: "2.3522" },
     ];
 
+    newDate = new Date();
+    today = this.newDate.getDate();
+
+    date = new Date();
+
     lat = null;
     lon = null;
 
@@ -34,6 +41,22 @@ class App extends Component {
     city;
     timezone;
     firstT;
+
+    days = [];
+
+    getDays = () => {
+        const day = this.date.getDate();
+        this.date.setDate(this.date.getDate() + 1);
+        const day2 = this.date.getDate();
+        this.date.setDate(this.date.getDate() + 1);
+        const day3 = this.date.getDate();
+        this.date.setDate(this.date.getDate() + 1);
+        const day4 = this.date.getDate();
+        this.date.setDate(this.date.getDate() + 1);
+        const day5 = this.date.getDate();
+
+        this.days = [day, day2, day3, day4, day5];
+    };
 
     switchHandler = () => {
         this.timezone = this.state.timezone;
@@ -61,12 +84,14 @@ class App extends Component {
     };
 
     componentDidMount() {
+        this.getDays();
         axios
             .get(
                 `https://api.openweathermap.org/data/2.5/onecall?lat=40.3777&lon=49.892&exclude=hourly&appid=1ef3e8cfb28e3ebb2ad31b47697f9613&units=metric`
             )
             .then((response) => {
                 this.setState({
+                    weeks: response.data.daily,
                     timezone: response.data.timezone,
                     temp: response.data.current.temp,
                     main: response.data.current.weather[0].main,
@@ -85,6 +110,7 @@ class App extends Component {
                 )
                 .then((response) => {
                     this.setState({
+                        weeks: response.data.daily,
                         timezone: response.data.timezone,
                         temp: response.data.current.temp,
                         main: response.data.current.weather[0].main,
@@ -105,14 +131,18 @@ class App extends Component {
                 {this.timezone === this.state.timezone ? (
                     <Loading />
                 ) : (
-                    <Main
-                        timezone={this.state.timezone}
-                        temp={this.state.temp}
-                        feels_like={this.state.feels_like}
-                        humidity={this.state.humidity}
-                        wind_speed={this.state.wind_speed}
-                        main={this.state.main}
-                    />
+                    <div>
+                        <Main
+                            timezone={this.state.timezone}
+                            temp={this.state.temp}
+                            feels_like={this.state.feels_like}
+                            humidity={this.state.humidity}
+                            wind_speed={this.state.wind_speed}
+                            main={this.state.main}
+                        />
+
+                        <Days days={this.days} weeks={this.state.weeks} />
+                    </div>
                 )}
             </div>
         );

@@ -7,6 +7,7 @@ import SRain from "../assets/icons/shower-rain.png";
 import Snow from "../assets/icons/snow.png";
 import Sun from "../assets/icons/sun.png";
 import Thunderstorm from "../assets/icons/thunderstorm.png";
+import Days from "./Days/Days";
 
 const Main = (props) => {
     let desc = null;

@@ -1,0 +1,40 @@
+.Days {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 35px;
+    background-color: rgba(16, 76, 145, 0.4);
+    padding: 12px;
+}
+
+.EachDay{
+    height: 100%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-flow: column;
+    padding: 5px;
+    padding: 0 5px;
+    border-right: 1px solid #fff;
+}
+.EachDay:last-child{
+    border: none;
+}
+.EachDay span{
+    padding: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+.EachDay span img{
+    width: 60px;
+}
+
+@media (max-width: 700px){
+    .Days{
+        width: 100%;
+    }
+}
